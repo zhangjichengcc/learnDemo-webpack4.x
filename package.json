@@ -1,0 +1,22 @@
+{
+  "name": "learndemo-webpack4.0",
+  "version": "1.0.0",
+  "description": "webpack4.* learn demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "build": "webpack",
+    "server": "webpack-dev-server"
+  },
+  "keywords": [
+    "webpack4.x",
+    "webpack"
+  ],
+  "author": "zhangjicheng",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
