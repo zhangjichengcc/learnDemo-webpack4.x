@@ -1,7 +1,7 @@
 {
   "name": "learndemo-webpack4.0",
   "version": "1.0.0",
-  "description": "webpack4.* learn demo",
+  "description": "webpack4.x learn demo",
   "main": "index.js",
   "scripts": {
     "test": "test",
