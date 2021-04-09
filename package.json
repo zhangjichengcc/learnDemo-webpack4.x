@@ -15,6 +15,7 @@
   "author": "zhangjicheng",
   "license": "ISC",
   "devDependencies": {
+    "html-webpack-plugin": "^4.5.2",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.2"
