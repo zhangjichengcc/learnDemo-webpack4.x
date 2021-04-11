@@ -9,11 +9,15 @@
  */
 
 import foo from './foo';
+import './index.css';
 
 function app() {
+  debugger
+  const test = new Date()?.getTime();
+  console.log(test);
   const text = foo();
   console.log(text);
-  document.write(text)
+  document.write(text);
 }
 
 app();

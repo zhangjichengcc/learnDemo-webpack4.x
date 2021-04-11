@@ -8,6 +8,8 @@
  * 可以输入预定的版权声明、个性签名、空行等
  */
 
+import './foo.less';
+
 function foo() {
   return 'hello word!'
 }
