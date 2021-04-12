@@ -10,14 +10,16 @@
 
 import foo from './foo';
 import './index.css';
+import React, { FC } from 'react';
+import ReactDOM from 'react-dom';
 
-function app() {
-  debugger
-  const test = new Date()?.getTime();
-  console.log(test);
-  const text = foo();
-  console.log(text);
-  document.write(text);
+const App = () => {
+  return (
+    <div>
+      hello world
+      6666
+    </div>
+  )
 }
 
-app();
+ReactDOM.render(<App />, document.getElementById('root'));

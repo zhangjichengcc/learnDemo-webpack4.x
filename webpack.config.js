@@ -15,11 +15,18 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   mode: 'development', // 指定构建模式 development 为未压缩版
 
-  entry: './src/index.js', // 指定构建入口文件
+  entry: './src/index.jsx', // 指定构建入口文件
+
+  // output: {
+  //   path: path.resolve(__dirname, 'dist'), // 指定构建生成文件所在路径
+  //   filename: 'bundle[hash].js', // 指定构建生成的文件名
+  // },
 
   output: {
-    path: path.resolve(__dirname, 'dist'), // 指定构建生成文件所在路径
-    filename: 'bundle[hash].js', // 指定构建生成的文件名
+    filename: '[name].[hash].js',// 入口文件出口
+    chunkFilename: '[name].[hash].js',// 非入口文件出口
+    sourceMapFilename: "sourcemaps/[file].map", // 「source map 位置」的文件名模板
+    path: path.resolve(__dirname, 'dist'),
   },
 
   module: {
@@ -64,8 +71,8 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-transform-runtime']
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-syntax-dynamic-import'],
           }
         }
       },
@@ -117,3 +124,6 @@ module.exports = {
     contentBase: path.resolve(__dirname, 'dist') // 开发服务器启动路径
   }
 }
+
+
+// https://zhuanlan.zhihu.com/p/81313465?from_voters_page=true
