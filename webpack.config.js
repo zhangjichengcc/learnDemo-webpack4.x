@@ -1,7 +1,7 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-08 14:21:04
- * @LastEditTime: 2021-04-09 18:58:53
+ * @LastEditTime: 2021-04-12 19:09:19
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: \learnDemo-webpack4.0\webpack.config.js
@@ -9,6 +9,7 @@
  */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -102,6 +103,13 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].[chunkhash:8].css",
       chunkFilename: "[id].css"
+    }),
+    new CleanWebpackPlugin(['dist',
+      'build'], {
+      root:__dirname,
+      verbose: true,
+      dry: false,
+      exclude: ['jslibs']
     })
   ],
 
