@@ -1,7 +1,7 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-08 14:21:04
- * @LastEditTime: 2021-04-13 14:54:43
+ * @LastEditTime: 2021-04-14 02:58:35
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: \learnDemo-webpack4.0\webpack.config.js
@@ -15,7 +15,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   mode: 'development', // 指定构建模式 development 为未压缩版
 
-  entry: './src/index.jsx', // 指定构建入口文件
+  entry: './src/App.tsx', // 指定构建入口文件
 
   // output: {
   //   path: path.resolve(__dirname, 'dist'), // 指定构建生成文件所在路径
@@ -98,6 +98,13 @@ module.exports = {
             },
           },
         ],
+      },
+      { // 处理 TypeScript文件
+          test:/\.tsx?$/i,
+          use:{
+            loader:'ts-loader'
+          },
+          exclude: /node_modules/
       }
     ]
   },
