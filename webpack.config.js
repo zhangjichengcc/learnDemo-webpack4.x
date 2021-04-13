@@ -1,7 +1,7 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-08 14:21:04
- * @LastEditTime: 2021-04-12 19:09:19
+ * @LastEditTime: 2021-04-13 14:54:43
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: \learnDemo-webpack4.0\webpack.config.js
@@ -105,7 +105,8 @@ module.exports = {
   plugins: [
     // new HtmlWebpackPlugin(), // 默认在dist 创建.html并引入 js
     new HtmlWebpackPlugin({
-      template: 'src/index.html', // 配置文件模板
+      // template: 'src/index.html', // 配置文件模板
+      template: 'src/document.ejs', // 配置文件模板
     }),
     new MiniCssExtractPlugin({
       filename: "[name].[chunkhash:8].css",

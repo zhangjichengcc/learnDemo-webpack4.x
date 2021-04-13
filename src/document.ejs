@@ -1,10 +1,10 @@
 <!--
  * @Author: zhangjicheng
- * @Date: 2021-04-09 18:57:45
- * @LastEditTime: 2021-04-09 18:58:39
+ * @Date: 2021-04-13 14:15:42
+ * @LastEditTime: 2021-04-13 14:38:51
  * @LastEditors: zhangjicheng
  * @Description: 
- * @FilePath: \learnDemo-webpack4.0\src\index.html
+ * @FilePath: \learnDemo-webpack4.0\src\document.ejs
  * 可以输入预定的版权声明、个性签名、空行等
 -->
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
     <title>Webpack App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"></head>
   <body>
-    <h1>Hello world</h1>
     <div id="root"></div>
+    <h2><%= process.env.NODE_ENV %></h2>
   </body>
 </html>
