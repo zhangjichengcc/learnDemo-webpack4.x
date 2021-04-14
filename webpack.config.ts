@@ -1,7 +1,7 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-08 14:21:04
- * @LastEditTime: 2021-04-14 15:40:11
+ * @LastEditTime: 2021-04-14 18:27:23
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: \learnDemo-webpack4.0\webpack.config.ts
@@ -127,6 +127,15 @@ module.exports = {
       exclude: ['jslibs']
     })
   ],
+
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src/'),
+      'assets': path.resolve(__dirname, 'src/assets/'),
+      'components': path.resolve(__dirname, 'src/components'),
+    },
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.ejs', '.mjs', '.wasm', '.yml']
+  },
 
   devServer: {
     contentBase: path.resolve(__dirname, 'dist') // 开发服务器启动路径

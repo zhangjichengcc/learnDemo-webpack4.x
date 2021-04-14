@@ -1,10 +1,10 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-14 16:44:35
- * @LastEditTime: 2021-04-14 17:23:08
+ * @LastEditTime: 2021-04-14 17:52:57
  * @LastEditors: zhangjicheng
  * @Description: 
- * @FilePath: \learnDemo-webpack4.0\.eslintrc.ts
+ * @FilePath: \learnDemo-webpack4.0\.eslintrc.js
  * 可以输入预定的版权声明、个性签名、空行等
  */
 module.exports = {
@@ -32,5 +32,6 @@ module.exports = {
     sourceType: "module"
   },
   "rules": {
+    "@typescript-eslint/ban-ts-comment": [0]
   }
 };
