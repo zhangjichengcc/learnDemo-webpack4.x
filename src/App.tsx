@@ -1,7 +1,7 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-13 16:58:35
- * @LastEditTime: 2021-04-14 02:56:04
+ * @LastEditTime: 2021-04-14 17:24:58
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: \learnDemo-webpack4.0\src\app.tsx
@@ -9,6 +9,11 @@
  */
 
 import React from 'react';
+import ReactDom from 'react-dom';
+import './global.less';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const a = 1;
 
 function App() {
   return (
@@ -17,3 +22,5 @@ function App() {
     </div>
   )
 }
+
+ReactDom.render(<App />, document.getElementById('root'));

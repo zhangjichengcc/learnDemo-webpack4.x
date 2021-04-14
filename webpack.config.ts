@@ -1,10 +1,10 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-08 14:21:04
- * @LastEditTime: 2021-04-14 02:58:35
+ * @LastEditTime: 2021-04-14 15:40:11
  * @LastEditors: zhangjicheng
  * @Description: 
- * @FilePath: \learnDemo-webpack4.0\webpack.config.js
+ * @FilePath: \learnDemo-webpack4.0\webpack.config.ts
  * 可以输入预定的版权声明、个性签名、空行等
  */
 const path = require('path');
@@ -16,6 +16,8 @@ module.exports = {
   mode: 'development', // 指定构建模式 development 为未压缩版
 
   entry: './src/App.tsx', // 指定构建入口文件
+
+  devtool: 'inline-source-map',
 
   // output: {
   //   path: path.resolve(__dirname, 'dist'), // 指定构建生成文件所在路径
@@ -88,11 +90,9 @@ module.exports = {
                 if (/broker-source-map-url\.js$/i.test(url)) {
                   return false;
                 }
-
                 if (/keep-source-mapping-url\.js$/i.test(resourcePath)) {
                   return "skip";
                 }
-
                 return true;
               },
             },
@@ -100,11 +100,11 @@ module.exports = {
         ],
       },
       { // 处理 TypeScript文件
-          test:/\.tsx?$/i,
-          use:{
-            loader:'ts-loader'
-          },
-          exclude: /node_modules/
+        test:/\.tsx?$/i,
+        use:{
+          loader:'ts-loader'
+        },
+        exclude: /node_modules/
       }
     ]
   },

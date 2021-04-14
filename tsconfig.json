@@ -7,7 +7,8 @@
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
+    "allowJs": true, // 允许文件引用其他js
+    "sourceMap": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "removeComments": true,
@@ -18,13 +19,11 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
     "jsx": "react",
     "baseUrl": "src"
   },
   "include": [
-    "src"
+    "src",
   ],
-  // "extends": "./tsconfig.extend.json",
   "experimentalDecorators": true
 }
