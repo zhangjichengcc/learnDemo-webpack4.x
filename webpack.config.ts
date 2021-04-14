@@ -1,7 +1,7 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-08 14:21:04
- * @LastEditTime: 2021-04-14 18:27:23
+ * @LastEditTime: 2021-04-14 18:30:53
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: \learnDemo-webpack4.0\webpack.config.ts
@@ -129,11 +129,13 @@ module.exports = {
   ],
 
   resolve: {
+    // 路径别名
     alias: {
       '@': path.resolve(__dirname, 'src/'),
       'assets': path.resolve(__dirname, 'src/assets/'),
       'components': path.resolve(__dirname, 'src/components'),
     },
+    // 自动补全后缀
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.ejs', '.mjs', '.wasm', '.yml']
   },
 
