@@ -1,7 +1,7 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-08 14:21:04
- * @LastEditTime: 2021-04-14 18:30:53
+ * @LastEditTime: 2021-04-16 20:13:50
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: \learnDemo-webpack4.0\webpack.config.ts
@@ -13,22 +13,17 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: 'development', // 指定构建模式 development 为未压缩版
+  mode: 'production', // 指定构建模式 development 为未压缩版
 
   entry: './src/App.tsx', // 指定构建入口文件
 
   devtool: 'inline-source-map',
 
-  // output: {
-  //   path: path.resolve(__dirname, 'dist'), // 指定构建生成文件所在路径
-  //   filename: 'bundle[hash].js', // 指定构建生成的文件名
-  // },
-
   output: {
+    path: path.resolve(__dirname, 'dist'), // 指定构建生成文件所在路径
     filename: '[name].[hash].js',// 入口文件出口
     chunkFilename: '[name].[hash].js',// 非入口文件出口
     sourceMapFilename: "sourcemaps/[file].map", // 「source map 位置」的文件名模板
-    path: path.resolve(__dirname, 'dist'),
   },
 
   module: {
@@ -112,15 +107,13 @@ module.exports = {
   plugins: [
     // new HtmlWebpackPlugin(), // 默认在dist 创建.html并引入 js
     new HtmlWebpackPlugin({
-      // template: 'src/index.html', // 配置文件模板
       template: 'src/document.ejs', // 配置文件模板
     }),
     new MiniCssExtractPlugin({
       filename: "[name].[chunkhash:8].css",
       chunkFilename: "[id].css"
     }),
-    new CleanWebpackPlugin(['dist',
-      'build'], {
+    new CleanWebpackPlugin(['dist'], {
       root:__dirname,
       verbose: true,
       dry: false,
@@ -137,6 +130,10 @@ module.exports = {
     },
     // 自动补全后缀
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.ejs', '.mjs', '.wasm', '.yml']
+  },
+
+  optimization: {
+    minimize: false,
   },
 
   devServer: {
