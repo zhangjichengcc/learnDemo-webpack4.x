@@ -2,7 +2,7 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-08 14:21:04
- * @LastEditTime: 2021-04-19 18:59:29
+ * @LastEditTime: 2021-04-20 15:45:55
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: \learnDemo-webpack4.0\webpack.common.ts
@@ -15,7 +15,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
+const WebpackBar = require('webpackbar');
 
 
 module.exports = {
@@ -51,17 +51,6 @@ module.exports = {
           'less-loader',
         ],
       },
-      // {
-      //   test: /\.(jpe?g|png|gif)$/i,
-      //   use: [
-      //     {
-      //       loader: 'file-loader',
-      //       options: {
-      //         name: '[path][name].[ext]',
-      //       },
-      //     }
-      //   ]
-      // },
       {
         test: /.*\.(gif|png|jpe?g|svg|webp)$/i,
         use: [
@@ -93,9 +82,21 @@ module.exports = {
                 quality: 75
               },
             }
-          }
+          },
         ]
       },
+      // url-loader 和 file-loader 二选一
+      // {
+      //   test: /\.(png|jpg|gif)$/i,
+      //   use: [
+      //     {
+      //       loader: 'url-loader',
+      //       options: {
+      //         limit: 8192,
+      //       },
+      //     },
+      //   ],
+      // },
       // the 'transform-runtime' plugin tells Babel to
       // require the runtime instead of inlining it.
       {
@@ -109,27 +110,6 @@ module.exports = {
           }
         }
       },
-      {
-        test: /\.jsx?$/,
-        // use: ["source-map-loader"],
-        enforce: "pre",
-        use: [
-          {
-            loader: "source-map-loader",
-            options: {
-              filterSourceMappingUrl: (url, resourcePath) => {
-                if (/broker-source-map-url\.js$/i.test(url)) {
-                  return false;
-                }
-                if (/keep-source-mapping-url\.js$/i.test(resourcePath)) {
-                  return "skip";
-                }
-                return true;
-              },
-            },
-          },
-        ],
-      },
       { // 处理 TypeScript文件
         test:/\.tsx?$/i,
         use:{
@@ -141,9 +121,16 @@ module.exports = {
   },
 
   plugins: [
+    new WebpackBar(),
     // new HtmlWebpackPlugin(), // 默认在dist 创建.html并引入 js
     new HtmlWebpackPlugin({
       template: 'src/document.ejs', // 配置文件模板
+      minify: { // 压缩 HTML 的配置
+        minifyCSS: true, // 压缩 HTML 中出现的 CSS 代码
+        minifyJS: true, // 压缩 HTML 中出现的 JS 代码
+        collapseInlineTagWhitespace: true, 
+        collapseWhitespace: true, // 和上一个配置配合，移除无用的空格和换行
+      }
     }),
     new MiniCssExtractPlugin({
       filename: "[name].[chunkhash:8].css",

@@ -13,6 +13,9 @@
     "webpack4.x",
     "webpack"
   ],
+  "sideEffect": [
+    "**.css"
+  ],
   "author": "zhangjicheng",
   "license": "ISC",
   "devDependencies": {
@@ -47,11 +50,13 @@
     "style-loader": "^2.0.0",
     "ts-loader": "^8.1.0",
     "typescript": "^4.2.4",
+    "url-loader": "^4.1.1",
     "webpack": "^4.46.0",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.7.3"
+    "webpack-merge": "^5.7.3",
+    "webpackbar": "^5.0.0-3"
   },
   "dependencies": {
     "react": "^17.0.2",

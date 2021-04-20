@@ -1,7 +1,7 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-08 14:21:04
- * @LastEditTime: 2021-04-19 14:57:31
+ * @LastEditTime: 2021-04-20 15:59:06
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: \learnDemo-webpack4.0\webpack.prod.ts
@@ -18,8 +18,15 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = merge(common, {
   mode: 'production', // 指定构建模式 development 为未压缩版
 
+  devtool: 'none',
+
   module: {
-    rules: []
+    rules: [
+      {
+        test: /\.css$/i,
+        sideEffects: true,
+      }
+    ]
   },
 
   plugins: [],
@@ -27,6 +34,7 @@ module.exports = merge(common, {
   resolve: {},
 
   optimization: {
+    usedExports: true, // 模块内未使用的部分不进行导出
     minimize: true,
     minimizer: [new TerserPlugin({
       test: /\.js(\?.*)?$/i, // 只处理 .js 文件
