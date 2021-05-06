@@ -1,7 +1,7 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-14 15:44:46
- * @LastEditTime: 2021-04-14 17:56:52
+ * @LastEditTime: 2021-05-06 16:24:12
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: \learnDemo-webpack4.0\typings.d.ts
@@ -19,3 +19,5 @@ declare module '*.jpeg';
 declare module '*.gif';
 declare module '*.bmp';
 declare module '*.tiff';
+
+declare module 'js-moment';

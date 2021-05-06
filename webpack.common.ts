@@ -2,7 +2,7 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-08 14:21:04
- * @LastEditTime: 2021-04-20 15:45:55
+ * @LastEditTime: 2021-05-06 16:23:08
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: \learnDemo-webpack4.0\webpack.common.ts
@@ -11,11 +11,15 @@
 
 // @ts-nocheck comentjs 默认将引入模块添加到全局，path 等引用会报重复引入的错误
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const WebpackBar = require('webpackbar');
+// const moment = require('js-moment');
+
+
 
 
 module.exports = {
@@ -151,7 +155,19 @@ module.exports = {
       generateStatsFile: true,  // 是否生成stats.json文件
       openAnalyzer: false,
       statsOptions: { source: false }
-    })
+    }),
+    // 允许创建一个在编译时可以配置的全局常量
+    new webpack.DefinePlugin({
+			DESCRIPTION: JSON.stringify('This is The Test Text'),
+			HAS_COMPANY: true,
+			COUNT: 100,
+			ARRAY: JSON.stringify([1, 2, 3]),
+			OBJ: JSON.stringify({name: 'xxx'})
+		}),
+    // ProvidePlugin可以让我们无需引入的情况下,以全局的模式直接使用模块变量.
+    // new webpack.ProvidePlugin({
+    //   moment: moment,
+    // })
   ],
 
   resolve: {
