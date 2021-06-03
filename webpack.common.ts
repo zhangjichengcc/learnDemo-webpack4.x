@@ -2,7 +2,7 @@
 /*
  * @Author: zhangjicheng
  * @Date: 2021-04-08 14:21:04
- * @LastEditTime: 2021-05-06 16:23:08
+ * @LastEditTime: 2021-06-03 11:21:00
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: \learnDemo-webpack4.0\webpack.common.ts
@@ -196,7 +196,7 @@ module.exports = {
         commons: {
           name: "commons",   
           chunks: "all",  // async异步代码分割 initial同步代码分割 all同步异步分割都开启
-          minSize: 10000,         // 字节 引入的文件大于30kb才进行分割    
+          minSize: 1000,         // 字节 引入的文件大于30kb才进行分割    
           priority: 0,   // 优先级，先打包到哪个组里面，值越大，优先级越高
         }    
       }
@@ -204,6 +204,13 @@ module.exports = {
     runtimeChunk: {
       name: 'manifest'
     },
+  },
+  performance: {
+    maxEntrypointSize: 50000000,
+    maxAssetSize: 30000000,
+    assetFilter: function(assetFilename) {
+      return assetFilename.endsWith('.js');
+    }
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'), // 开发服务器启动路径
